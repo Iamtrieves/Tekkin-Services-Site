@@ -28,22 +28,25 @@ window.addEventListener('scroll', () => {
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-links");
 const body = document.querySelector('#body');
+const header = document.querySelector('#header');
 
 hamburger.addEventListener("click", () => {
     hamburger.classList.toggle("active");
     navMenu.classList.toggle("active");
-
+    header.classList.toggle("hamburger-menu-blur-effect");
     // Update link color based on navMenu state
     setLinkColor(navMenu.classList.contains("active") ? 'var(--tekins-green)' : 'var(--tekins-white)');
 
     // Prevent scrolling when navMenu is active
     document.body.classList.toggle("no-scroll", navMenu.classList.contains("active"));
+    // document.body.classList.toggle("hamburger-menu-blur-effect", navMenu.classList.contains("active"));
 });
 
 // Targets the hamburger & navMenu variable and removes the class active attached to them i.e closes by clicking any of them or the links it takes away the navMenu from the page
 document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
+    header.classList.remove("hamburger-menu-blur-effect");
 }))
 // Targets the the body element and removes the class no-scroll on the it when any of the nav-link is clicked
 document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
